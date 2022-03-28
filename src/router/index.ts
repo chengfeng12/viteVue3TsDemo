@@ -10,7 +10,12 @@ const routes = [
     path: "/home",
     name: "home",
     component: () => import('@views/Home/index.vue')
-  }
+  },
+  {
+    path: "/catchPage",
+    name: "catchPage",
+    component: () => import('@views/CatchPage/index.vue')
+  },
 ]
 
 // 在 Vue-router新版本中，需要使用createRouter来创建路由
