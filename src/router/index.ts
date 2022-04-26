@@ -1,4 +1,12 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+/*
+ * @Author: your name
+ * @Date: 2022-03-04 16:30:15
+ * @LastEditTime: 2022-04-26 19:43:36
+ * @LastEditors: Please set LastEditors
+ * @Description: 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @FilePath: /viteVue3Demo/src/router/index.ts
+ */
+import { createRouter, createWebHashHistory, createWebHistory } from "vue-router";
 
 const routes = [
   {
@@ -9,18 +17,42 @@ const routes = [
   {
     path: "/home",
     name: "home",
-    component: () => import('@views/Home/index.vue')
+    component: () => import('@views/home/index.vue')
   },
   {
     path: "/catchPage",
     name: "catchPage",
-    component: () => import('@views/CatchPage/index.vue')
+    component: () => import('@views/catchPage/index.vue')
   },
+  {
+    path: "/elementUiPages",
+    name: "elementUiPages",
+    redirect: "button",
+    component: () => import('@views/elementUiPages/index.vue'),
+    meta: {title: "element"},
+    //  子路由path不用写  /
+    children: [
+      {
+        path: "button",
+        name: "button",
+        component: () => import('@views/elementUiPages/button.vue')
+      },
+      {
+        path: "table",
+        name: "table",
+        component: () => import('@views/elementUiPages/table.vue')
+      }
+    ]
+  }
 ]
 
 // 在 Vue-router新版本中，需要使用createRouter来创建路由
+console.log(createWebHashHistory('history'), "createWebHashHistory('history')");
+
 const router = createRouter({
-  history: createWebHashHistory(),
+  // createWebHistory
+  // history: createWebHashHistory(),
+  history: createWebHistory(),
   routes
 })
 
