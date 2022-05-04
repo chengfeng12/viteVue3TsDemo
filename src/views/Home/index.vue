@@ -40,6 +40,7 @@ import { useRouter } from "vue-router";
 import { debounce, throttle, openWin } from "@utils/index";
 import Test from "@views/Home/test.vue";
 
+console.log(Test, "Test");
 const router = useRouter();
 /* 闭包 */
 /* function test() {

@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2022-03-23 14:54:41
- * @LastEditTime: 2022-04-26 16:03:46
+ * @LastEditTime: 2022-04-26 20:02:17
  * @LastEditors: Please set LastEditors
  * @Description: 全局的方法
  * @FilePath: /viteVue3Demo/src/assets/utils/index.js
@@ -32,7 +32,7 @@ export const debounce = (func: Function, delay = 500) => {
       clearTimeout(timer);
     }
 
-    timer = setTimeout(() => {
+    timer = window.setTimeout(() => {
       func.apply(this, args);
     }, delay);
   };
