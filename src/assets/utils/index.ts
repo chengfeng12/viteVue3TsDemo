@@ -1,17 +1,14 @@
 /*
  * @Author: your name
  * @Date: 2022-03-23 14:54:41
- * @LastEditTime: 2022-04-26 20:02:17
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2022-05-05 11:24:21
+ * @LastEditors: YXR 913457727@qq.com
  * @Description: 全局的方法
  * @FilePath: /viteVue3Demo/src/assets/utils/index.js
  */
 
 import { useRouter, LocationQueryRaw } from "vue-router"; // 引入 router
 const router = useRouter();
-setTimeout(() => {
-  console.log(router, "router");
-}, 0);
 /**
  * @description: 防抖函数
  * @param {*} func 执行事件

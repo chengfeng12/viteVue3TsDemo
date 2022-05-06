@@ -1,5 +1,5 @@
 <template>
-  <div class="container" :style="style">
+  <div class="container-home" :style="style">
     <template class="test">
       <div>112111</div>
     </template>
@@ -21,9 +21,18 @@
       <li>5</li>
     </ul>
 
+    <p>
+      {{msg}}
+      {{data}}
+      {{com}}
+      {{com2}}
+    </p>
+
     <div class="btn" @click="catchPage">缓存</div>
     <div class="btn" @click="debounceClick">防抖</div>
     <div class="btn" @click="debounceClick2">防抖2</div>
+
+    <el-button type="primary" @click="changeValue">改变值</el-button>
     <Test></Test>
 
     <div>
@@ -35,10 +44,38 @@
 </template>
 
 <script setup>
-import { onMounted, ref, reactive } from "vue";
+import { onMounted, ref, reactive, watch, computed } from "vue";
 import { useRouter } from "vue-router";
 import { debounce, throttle, openWin } from "@utils/index";
 import Test from "@views/Home/test.vue";
+
+let msg = ref('message');
+let data = reactive({
+  a: 1,
+  b: 2
+});
+
+const changeValue = () => {
+  msg.value = 'update';
+  data.a = '哈哈'
+}
+
+watch([msg, data], (newval) => {
+  console.log('改变了', newval);
+})
+
+const com = computed(() => {
+  return msg.value + '-----computed'
+})
+
+const com2 = computed({
+  get() {
+    return msg.value + '-----computed2'
+  },
+  set(value) {
+    return 'com----' + value
+  }
+})
 
 console.log(Test, "Test");
 const router = useRouter();
